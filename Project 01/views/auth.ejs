@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortner</title>
+    <style>
+        body{
+            background-color: #242424;
+            color: #f5f5f5;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-top: 2.25rem;
+        }
+        button{
+            padding: 0.5rem 1.25rem ;
+            font-size: 1.25rem;
+            border: none;
+            border-radius: 5px;
+            background-color: khaki;
+            color: black;
+            cursor: pointer;
+            transition: box-shadow 0.15s ease-in-out;
+        }
+        button:hover{
+            box-shadow: 0 0 10px khaki;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+        }
+        h1{
+            text-decoration: underline;
+            color: khaki;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>URL Shortner</h1>
+    <div class="container">
+        <a href="/signup">
+            <button>Sign Up</button>
+        </a>
+        <a href="/login">
+            <button>Login</button>
+        </a>
+    </div>
+</body>
+</html>

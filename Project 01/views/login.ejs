@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortner</title>
+    <style>
+        body{
+            background-color: #242424;
+            color: #f5f5f5;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .container{
+            margin-top: 2.25rem;
+            border: 2px solid khaki;
+            width: max-content;
+            margin-inline: auto;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        label,input{
+            font-size: 1.25rem;
+        }
+        input{
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            border: none;
+            outline: 2px solid khaki;
+            transition: box-shadow 0.15s ease-in-out;
+        }
+        input:hover,
+        input:focus{
+            box-shadow: 0 0 10px khaki;
+        }
+        .flex{
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            gap: 0.5rem;
+        }
+        button{
+            padding: 0.5rem 1.25rem ;
+            font-size: 1.25rem;
+            border: none;
+            border-radius: 5px;
+            background-color: khaki;
+            color: black;
+            cursor: pointer;
+            transition: box-shadow 0.15s ease-in-out;
+        }
+        button:hover{
+            box-shadow: 0 0 10px khaki;
+        }
+        h1{
+            text-decoration: underline;
+            color: khaki;
+            font-weight: bold;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+        p{
+            text-align: center;
+            color: red;
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <div class="container">
+        <form action="/user/login" method="post">
+
+            <div class="flex">
+                <label for="email-address">Email</label>
+                <input type="email" id="email-address" name="email" placeholder="example123@xyz.com">
+            </div>
+
+            <div class="flex">
+                <label for="user-password">Password</label>
+                <input type="password" id="user-password" name="password">
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <% if (locals.error) { %>
+        <p><%= error %></p>
+    <% } %>
+</body>
+</html>

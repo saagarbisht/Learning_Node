@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortner</title>
+    <style>
+        body{
+            background-color: #242424;
+            color: #f5f5f5;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .container{
+            margin-top: 2.25rem;
+            border: 2px solid khaki;
+            width: max-content;
+            margin-inline: auto;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+        }
+        .container2{
+            margin-top: 2.25rem;
+            width: max-content;
+            margin-inline: auto;
+            padding: 0.15rem 0.5rem;
+            border: 2px solid khaki;
+            border-radius: 6px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        label,input{
+            font-size: 1.25rem;
+        }
+        input{
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            border: none;
+            outline: 2px solid khaki;
+            transition: box-shadow 0.15s ease-in-out;
+        }
+        input:hover,
+        input:focus{
+            box-shadow: 0 0 10px khaki;
+        }
+        .flex{
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            gap: 0.5rem;
+        }
+        button{
+            padding: 0.5rem 1.25rem ;
+            font-size: 1.25rem;
+            border: none;
+            border-radius: 5px;
+            background-color: khaki;
+            color: black;
+            cursor: pointer;
+            transition: box-shadow 0.15s ease-in-out;
+        }
+        button:hover{
+            box-shadow: 0 0 10px khaki;
+        }
+        h1{
+            text-decoration: underline;
+            color: khaki;
+            font-weight: bold;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+        tabel{
+            border-collapse: collapse;
+        }
+        th,td{
+            border: 1px solid khaki;
+            text-align: center;
+            padding: 0.25rem 0.5rem;
+        }
+        h3{
+            text-align: center;
+            color: khaki;
+            font-size: 1.5rem;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>URL Shortner</h1>
+    <div class="container">
+        <form action="/url" method="post">
+            <div class="flex">
+                <label for="url">Enter URL</label>
+                <input type="text" id="url" name="url" placeholder="https://example.com">
+            </div>
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+    <div class="container2">
+        <h3>Link History</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Short Id</th>
+                <th>Redirect Link</th>
+                <th>Visits</th>
+            </tr>
+            </thead>
+            <tbody>
+                <% data.forEach((url,idx) => { %>
+                    <tr>
+                        <td><%= idx + 1 %></td>
+                        <td> <%= url.short_id %></td>
+                        <td><%= url.redirect_url %></td>
+                        <td><%= url.visit_history.length %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
