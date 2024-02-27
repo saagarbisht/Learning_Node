@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+  </head>
+
+  <body>
+    <div class="container">
+      <% if (locals.error) { %>
+        <div class="alert alert-danger" role="alert">
+          <%= locals.error %>
+        </div>  
+      <% } %>
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card border-0 shadow rounded-3 my-5">
+            <div class="card-body p-4 p-sm-5">
+              <div class="mb-3 card-title text-center fw-light fs-5 d-flex column-gap-3 justify-content-center">
+                <h3>Sign-up</h3>
+                <a href="/user/login">
+                  <button
+                  class="btn btn-primary btn-login text-uppercase fw-bold"
+                  type="submit"
+                >
+                  Login
+                </button>
+                </a>
+              </div>
+              <form action="/user/signup" method="post">
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="username"
+                    id="username"
+                    name="username"
+                  />
+                  <label for="username">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="name@example.com"
+                    name="email"
+                  />
+                  <label for="email">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password"
+                    name="password"
+                  />
+                  <label for="password">Password</label>
+                </div>
+
+                <div class="d-grid">
+                  <button
+                    class="btn btn-primary btn-login text-uppercase fw-bold"
+                    type="submit"
+                  >
+                    Sign in
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include("./partials/script") %>
+  </body>
+</html>

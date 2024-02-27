@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+  </head>
+
+  <body>
+    <%- include("./partials/navbar") %>
+  <section class="py-3 py-md-5 py-xl-8">
+    <div class="container overflow-hidden">
+      <div class="row gy-4 gy-lg-0">
+        <div class="col-12">
+          <article>
+            <div class="card border-0">
+              <figure
+                class="card-img-top m-0 overflow-hidden bsb-overlay-hover"
+              >
+                <img
+                  class="img-fluid bsb-scale bsb-hover-scale-up"
+                  loading="lazy"
+                  src=<%= locals.post.coverImage %>
+                  alt=<%= locals.post.category %>
+                  style="object-fit: cover; width : 100%; height : 350px"
+                />
+              </figure>
+              <div class="card-body border bg-white p-4">
+                <div class="entry-header mb-3">
+                  <ul class="entry-meta list-unstyled d-flex mb-2">
+                    <li class="link-primary text-decoration-none">
+                        <%= locals.post.category %> @<%= locals.post.createdBy.username %>
+                    </li>
+                  </ul>
+                  <h2 class="card-title entry-title h4 mb-0">
+                    <%= locals.post.title %>
+                  </h2>
+                </div>
+                <p class="card-text entry-summary text-dark mb-3">
+                  <%= locals.post.summary %>
+                </p>
+                <p class="card-text entry-summary text-secondary mb-3">
+                  <%= locals.post.body %>
+                </p>
+              </div>
+              <div class="card-footer border border-top-0 bg-light p-4">
+                <ul
+                  class="entry-meta list-unstyled d-flex align-items-center m-0"
+                >
+                  <li class="fs-7 link-secondary text-decoration-none d-flex align-items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        fill="currentColor"
+                        class="bi bi-calendar3"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"
+                        />
+                        <path
+                          d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                        />
+                      </svg>
+                      <span class="ms-2 fs-7"><%= locals.post.time %></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section style="background-color: #eee;">
+  <div class="container  py-3">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12">
+        <h2 class="text-secondary">Comments : <%= locals.comment.length %></h2>
+
+        <% if (locals.user) { %>
+        
+          <form method="post" action=<%= `/blog/comment?id=${locals.post._id}` %>  class="my-5">
+            <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+              <div class="d-flex flex-start w-100">
+                <img 
+                src="/images/default.gif" 
+                alt="profile-image" 
+                class="mx-1"
+                style="object-fit : cover; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #eee;">
+                <div class="form-outline w-100">
+                  <textarea class="form-control" id="textAreaExample" rows="4"
+                    style="background: #fff;" name="content"></textarea>
+                  <label class="form-label" for="textAreaExample">Comment</label>
+                </div>
+              </div>
+              <div class="float-end mt-2 pt-1">
+                <button type="submit" class="btn btn-primary btn-sm">Post comment</button>
+                <button type="reset" class="btn btn-outline-primary btn-sm">Cancel</button>
+              </div>
+            </div>
+          </form>
+  
+        <% } %>
+        
+        <% locals.comment.forEach(comment => { %>
+          <div class="card mb-2">
+            <div class="card-body">
+              <div class="d-flex flex-start align-items-center">
+                <img class="rounded-circle shadow-1-strong me-3"
+                  src="/images/default.gif" alt="avatar" width="60"
+                  height="60" />
+                <div>
+                  <h6 class="fw-bold text-primary mb-1"><%= comment.createdBy.username %></h6>
+                  <p class="text-muted small mb-0">
+                    Shared publicly - <%= comment.time %>
+                  </p>
+                </div>
+              </div>
+              <p class="mt-3 mb-4 pb-2">
+                <%= comment.content %>
+              </p>
+            </div>
+          </div>
+        <% }) %>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+    <%- include("./partials/script") %>
+  </body>
+</html>

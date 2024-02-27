@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+  </head>
+
+  <body>
+    <%- include("./partials/navbar") %>
+		<form action="/blog/add" method="post" enctype="multipart/form-data">
+      <div class="container my-3">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-xl-9">
+            <div class="card" style="border-radius: 15px">
+              <div class="card-body">
+                <div class="row align-items-center pt-4 pb-3">
+                  <div class="col-md-3 ps-5">
+                    <h6 class="mb-0">Category</h6>
+                  </div>
+                  <div class="col-md-9 pe-5">
+                    <input type="text" class="form-control form-control-lg" name="category" required/>
+                  </div>
+                </div>
+
+                <hr class="mx-n3" />
+
+
+                <div class="row align-items-center pt-4 pb-3">
+                  <div class="col-md-3 ps-5">
+                    <h6 class="mb-0">Title</h6>
+                  </div>
+                  <div class="col-md-9 pe-5">
+                    <input type="text" class="form-control form-control-lg" name="title" required />
+                  </div>
+                </div>
+
+                <hr class="mx-n3" />
+
+                <div class="row align-items-center py-3">
+                  <div class="col-md-3 ps-5">
+                    <h6 class="mb-0">Content</h6>
+                  </div>
+                  <div class="col-md-9 pe-5">
+                    <textarea
+                      class="form-control"
+                      rows="3"
+                      placeholder="Content of the Blog Post"
+											name="body"
+                      required 
+                    ></textarea>
+                  </div>
+                </div>
+
+                <hr class="mx-n3" />
+
+                
+                <div class="row align-items-center pt-4 pb-3">
+                  <div class="col-md-3 ps-5">
+                    <h6 class="mb-0">Summary</h6>
+                  </div>
+                  <div class="col-md-9 pe-5">
+                    <textarea
+                    maxlength="300"
+                    class="form-control"
+                    rows="2"
+                    placeholder="Summary of the content"
+                    name="summary"
+                    required 
+                  ></textarea>
+                  </div>
+                </div>
+
+                <hr class="mx-n3" />
+
+                <div class="row align-items-center py-3">
+                  <div class="col-md-3 ps-5">
+                    <h6 class="mb-0">Cover Image</h6>
+                  </div>
+                  <div class="col-md-9 pe-5">
+                    <input
+                      class="form-control form-control-sm"
+                      id="formFileLg"
+                      type="file"
+											name="coverImage"
+                      required 
+                    />
+                    <div class="small text-muted mt-2">
+                      Upload Cover image. Max file size 50 MB
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="mx-n3" />
+
+                <div class="px-4 py-3">
+                  <button type="submit" class="btn btn-primary	">
+                    Post Blog
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+		</form>
+
+    <%- include("./partials/script") %>
+  </body>
+</html>
